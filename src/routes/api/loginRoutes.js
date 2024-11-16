@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');  // Para comparar contraseñas
-const jwt = require('jsonwebtoken');  // Para firmar el token
-const User = require('../../models/userModel');  // El modelo del usuario
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('../../models/userModel');  // El modelo de usuario
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -32,9 +32,9 @@ router.post('/login', async (req, res) => {
 
         // Generar un JWT si la autenticación fue exitosa
         const token = jwt.sign(
-            { userId: user.id },  // Payload (lo que almacenas en el token)
-            process.env.JWT_SECRET,  // Clave secreta para firmar el token
-            { expiresIn: '1h' }  // Tiempo de expiración del token
+            { userId: user.id },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
         );
 
         // Devolver el token al usuario
