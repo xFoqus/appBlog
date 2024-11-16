@@ -9,6 +9,9 @@ require('dotenv').config();
 const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3000;
+if (process.env.PORT) {
+    console.log(process.env.JWT_SECRET)
+}
 server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });

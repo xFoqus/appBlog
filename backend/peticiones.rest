@@ -1,0 +1,101 @@
+@url = http://localhost:3000/api
+
+### API AUTORES
+
+# Obtener todos los autores
+GET {{url}}/autores
+Authorization: Bearer eltokenseguro
+
+###
+
+# Obtener un autor por ID (por ejemplo, ID = 1)
+GET {{url}}/autores/1
+Authorization: Bearer eltokenseguro
+
+
+###
+
+# Crear un nuevo autor
+POST {{url}}/autores
+Content-Type: application/json
+Authorization: Bearer eltokenseguro
+
+{
+  "nombre": "Juan Pérez",
+  "email": "juan.perez@email.com",
+  "password": "contraseñaSegura",
+  "imagen": "http://example.com/imagen.jpg"
+}
+
+###
+
+# Actualizar un autor con ID 1
+PUT {{url}}/autores/1
+Content-Type: application/json
+Authorization: Bearer eltokenseguro
+
+{
+  "nombre": "Juan Pérez Actualizado",
+  "email": "juan.perez@nuevoemail.com",
+  "password": "contraseñaActualizada",
+  "imagen": "http://example.com/imagen_actualizada.jpg"
+}
+
+###
+
+# Eliminar un autor con ID 1
+DELETE {{url}}/autores/1
+
+###
+
+### API POSTS
+
+# Obtener todos los posts
+GET {{url}}/posts
+
+###
+
+# Obtener un post por ID (por ejemplo, ID = 1)
+GET {{url}}/posts/1
+
+###
+
+# Obtener todos los posts de un autor específico (por ejemplo, autor_id = 1)
+GET {{url}}/posts/autor/1
+
+###
+
+# Crear un nuevo post
+POST {{url}}/posts
+Content-Type: application/json
+Authorization: Bearer eltokenseguro
+{
+  "titulo": "Mi primer post",
+  "descripcion": "Este es el contenido del primer post del blog.",
+  "categoria": "Tecnología",
+  "autor_id": 1
+}
+
+###
+
+# Actualizar un post con ID 1
+PUT {{url}}/posts/1
+Content-Type: application/json
+Authorization: Bearer eltokenseguro
+
+{
+  "titulo": "Mi primer post actualizado",
+  "descripcion": "Este es el contenido actualizado del primer post del blog.",
+  "categoria": "Ciencia",
+  "autor_id": 1
+}
+
+###
+
+# Eliminar un post con ID 1
+DELETE {{url}}/posts/1
+
+###
+
+# Obtener todos los posts por categoría (por ejemplo, categoría = Tecnología)
+GET {{url}}/posts/categoria/Tecnología
