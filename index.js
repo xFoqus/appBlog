@@ -1,4 +1,4 @@
-// Server creation and configuration
+// index.js
 const http = require('http');
 const app = require('./src/app');
 
@@ -9,13 +9,11 @@ require('dotenv').config();
 const server = http.createServer(app);
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT);
-
-// Listeners
-server.on('listening', () => {
+server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 
+// Listeners
 server.on('error', (error) => {
     console.log(error);
 });
