@@ -18,10 +18,10 @@ async function selectAllAutores() {
     return autores;
 }
 
-async function insertAutor({ nombre, email, password }) {
+async function insertAutor({ nombre, email, imagen }) {
     const [result] = await pool.query(
-        'insert into autores (nombre, email, password) values (?, ?, ?)',
-        [nombre, email, password]
+        'insert into autores (nombre, email, imagen) values (?, ?, ?)',
+        [nombre, email, imagen]
     );
     return result.insertId;
 }

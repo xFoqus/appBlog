@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const { selectAutorById: selectById } = require("../models/autorModel");
 
 // Middleware para verificar si el autor existe

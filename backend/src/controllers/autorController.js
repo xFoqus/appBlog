@@ -1,9 +1,6 @@
-const bcrypt = require('bcryptjs');
 const { selectAutorById, insertAutor, selectAllAutores } = require("../models/autorModel");
 
 const registro = async (req, res, next) => {
-    req.body.password = await bcrypt.hash(req.body.password, 10);
-
     try {
         const insertId = await insertAutor(req.body);
         const autor = await selectAutorById(insertId);

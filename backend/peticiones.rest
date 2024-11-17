@@ -4,10 +4,11 @@
 # Registrarse/Crear autor
 POST {{url}}/autores/registro
 Content-Type: application/json
+
 {
   "nombre": "test",
-  "email": "test@gmail.com",
-  "password": "pass"
+  "email": "email@gmail.com",
+  "imagen": "pass"
 }
 
 ###
@@ -35,6 +36,7 @@ GET {{url}}/posts
 # Crear un nuevo post
 POST {{url}}/posts/new
 Content-Type: application/json
+
 {
   "titulo": "Titulo del post",
   "descripcion": "Descripcion del post",
