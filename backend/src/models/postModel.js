@@ -3,7 +3,7 @@ const db = require('../utils/db');
 // Obtener todos los posts junto con los datos del autor
 exports.getAllPosts = (callback) => {
     const query = `
-        SELECT posts.*, autores.nombre, autores.email, autores.imagen
+        SELECT posts.*, autores.nombre, autores.email
         FROM posts
         JOIN autores ON posts.autor_id = autores.id
     `;
@@ -23,12 +23,20 @@ exports.createPost = (titulo, descripcion, categoria, autor_id, callback) => {
 // Obtener posts por autor
 exports.getPostsByAutor = (autorId, callback) => {
     const query = `
-        SELECT posts.*, autores.nombre, autores.email, autores.imagen
+        SELECT posts.*, autores.nombre, autores.email
         FROM posts
         JOIN autores ON posts.autor_id = autores.id
         WHERE autores.id = ?
     `;
     db.query(query, [autorId], (err, results) => {
         callback(err, results);
+    });
+};
+
+// Eliminar un post
+exports.deletePost = (postId, callback) => {
+    const query = 'DELETE FROM posts WHERE id = ?';
+    db.query(query, [postId], (err, result) => {
+        callback(err, result);
     });
 };

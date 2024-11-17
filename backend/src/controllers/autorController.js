@@ -1,33 +1,51 @@
-// Importa el modelo de autores
-const { Author } = require('../models/autorModel');  // O usa el modelo que tengas configurado
+const bcrypt = require('bcryptjs');
+const { selectById, insertAutor } = require("../models/autorModel");
 
-// Función para crear un autor
-const createAuthor = async (req, res) => {
+// Ejemplo de funciones que podrías tener en el controlador
+const getAllAutores = (req, res) => {
+    // Lógica para obtener todos los autores
+    res.json({ message: "Obteniendo todos los autores" });
+};
+
+const registro = async (req, res, next) => {
+    // BODY: usuario, email, password
+    req.body.password = await bcrypt.hash(req.body.password, 10);
+
     try {
-        const { name, bio } = req.body;
-        const newAuthor = await Author.create({ name, bio });
-        res.status(201).json(newAuthor);
+        const insertId = await insertAutor(req.body);
+        const autor = await selectById(insertId);
+        res.json(autor);
     } catch (error) {
-        res.status(500).json({ message: 'Error al crear el autor', error });
+        next(error);
+    }
+}
+
+const getAutorById = async (req, res, next) => {
+    const { autorId } = req.params;
+    try {
+        const autor = await selectById(autorId);
+        res.json(autor);
+    } catch (error) {
+        next(error);
     }
 };
 
-// Función para obtener un autor por ID
-const getAuthorById = async (req, res) => {
-    const { authorId } = req.params;
 
-    try {
-        const author = await Author.findByPk(authorId);
-        if (!author) {
-            return res.status(404).json({ message: 'Autor no encontrado' });
-        }
-        res.status(200).json(author);
-    } catch (error) {
-        res.status(500).json({ message: 'Error al obtener el autor', error });
-    }
+const updateAutor = (req, res) => {
+    // Lógica para actualizar un autor por ID
+    res.json({ message: "Actualizando autor por ID" });
 };
 
+const deleteAutor = (req, res) => {
+    // Lógica para eliminar un autor por ID
+    res.json({ message: "Eliminando autor por ID" });
+};
+
+// Exportar todas las funciones
 module.exports = {
-    createAuthor,
-    getAuthorById
+    getAllAutores,
+    registro,
+    getAutorById,
+    updateAutor,
+    deleteAutor
 };

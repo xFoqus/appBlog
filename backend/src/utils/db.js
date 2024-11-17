@@ -6,6 +6,6 @@ const db = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'appBlog'
-});
+}).promise();
 
 module.exports = db;

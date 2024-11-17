@@ -1,15 +1,8 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 
-// Importar las rutas de autores y posts
-const autorRoutes = require('./api/autorRoutes');
-const postRoutes = require('./api/postRoutes');
+//const { checkToken } = require('../utils/middlewares');
 
-// Importar los middlewares
-const { checkToken } = require('../utils/middlewares');
-
-// Usar las rutas de autores y posts dentro de `/api` y protegerlas con el middleware checkToken
-router.use('/autores', checkToken, autorRoutes);  // Ruta para autores
-router.use('/posts', checkToken, postRoutes);     // Ruta para posts
+router.use('/autores', require('./api/autorRoutes'));  // Ruta para obtener o modificar autores
+router.use('/posts', require('./api/postRoutes'));     // Ruta para obtener, crear o eliminar posts
 
 module.exports = router;

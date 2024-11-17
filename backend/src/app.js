@@ -1,15 +1,11 @@
-// app.js
+// Creation and configuration of the Express APP
 const express = require('express');
-const bodyParser = require('body-parser');
-const apiRoutes = require('./routes/apiRoutes');
+const cors = require('cors');
 
 const app = express();
-
-// Middleware para manejar los datos JSON
-app.use(bodyParser.json());
-
-// Usar las rutas de la API
-app.use('/api', apiRoutes);
+app.use(express.json());
+app.use(cors());
+app.use('/api', require('./routes/apiRoutes'));
 
 // Manejo de errores para rutas no encontradas
 app.use((req, res) => {
@@ -22,4 +18,4 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Error en el servidor' });
 });
 
-module.exports = app;  // Asegúrate de exportar el app para que lo use index.js
+module.exports = app; 

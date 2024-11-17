@@ -4,35 +4,33 @@
 
 # Obtener todos los autores
 GET {{url}}/autores
-Authorization: Bearer eltokenseguro
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
+###
+
+# Registrarse
+POST {{url}}/autores/registro
+Content-Type: application/json
+
+{
+  "nombre": "fran perea",
+  "email": "fran@gmail.com",
+  "password": "pass"
+}
 
 ###
 
 # Obtener un autor por ID (por ejemplo, ID = 1)
 GET {{url}}/autores/1
-Authorization: Bearer eltokenseguro
-
-
-###
-
-# Crear un nuevo autor
-POST {{url}}/autores
-Content-Type: application/json
-Authorization: Bearer eltokenseguro
-
-{
-  "nombre": "Juan Pérez",
-  "email": "juan.perez@email.com",
-  "password": "contraseñaSegura",
-  "imagen": "http://example.com/imagen.jpg"
-}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
 
 ###
 
 # Actualizar un autor con ID 1
 PUT {{url}}/autores/1
 Content-Type: application/json
-Authorization: Bearer eltokenseguro
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
 
 {
   "nombre": "Juan Pérez Actualizado",
@@ -45,6 +43,9 @@ Authorization: Bearer eltokenseguro
 
 # Eliminar un autor con ID 1
 DELETE {{url}}/autores/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
+
 
 ###
 
@@ -52,23 +53,33 @@ DELETE {{url}}/autores/1
 
 # Obtener todos los posts
 GET {{url}}/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
+
 
 ###
 
 # Obtener un post por ID (por ejemplo, ID = 1)
 GET {{url}}/posts/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
+
 
 ###
 
 # Obtener todos los posts de un autor específico (por ejemplo, autor_id = 1)
 GET {{url}}/posts/autor/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
+
 
 ###
 
 # Crear un nuevo post
 POST {{url}}/posts
 Content-Type: application/json
-Authorization: Bearer eltokenseguro
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
 {
   "titulo": "Mi primer post",
   "descripcion": "Este es el contenido del primer post del blog.",
@@ -81,7 +92,8 @@ Authorization: Bearer eltokenseguro
 # Actualizar un post con ID 1
 PUT {{url}}/posts/1
 Content-Type: application/json
-Authorization: Bearer eltokenseguro
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
 
 {
   "titulo": "Mi primer post actualizado",
@@ -94,8 +106,14 @@ Authorization: Bearer eltokenseguro
 
 # Eliminar un post con ID 1
 DELETE {{url}}/posts/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
+
 
 ###
 
 # Obtener todos los posts por categoría (por ejemplo, categoría = Tecnología)
 GET {{url}}/posts/categoria/Tecnología
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
+
+
