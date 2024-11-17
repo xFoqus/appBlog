@@ -1,14 +1,7 @@
 const bcrypt = require('bcryptjs');
-const { selectAutorById, insertAutor } = require("../models/autorModel");
-
-// Ejemplo de funciones que podrías tener en el controlador
-const getAllAutores = (req, res) => {
-    // Lógica para obtener todos los autores
-    res.json({ message: "Obteniendo todos los autores" });
-};
+const { selectAutorById, insertAutor, selectAllAutores } = require("../models/autorModel");
 
 const registro = async (req, res, next) => {
-    // BODY: usuario, email, password
     req.body.password = await bcrypt.hash(req.body.password, 10);
 
     try {
@@ -30,22 +23,17 @@ const getAutorById = async (req, res, next) => {
     }
 };
 
-
-const updateAutor = (req, res) => {
-    // Lógica para actualizar un autor por ID
-    res.json({ message: "Actualizando autor por ID" });
+const getAllAutores = async (req, res, next) => {
+    try {
+        const autores = await selectAllAutores();
+        res.json(autores);
+    } catch (error) {
+        next(error);
+    }
 };
 
-const deleteAutor = (req, res) => {
-    // Lógica para eliminar un autor por ID
-    res.json({ message: "Eliminando autor por ID" });
-};
-
-// Exportar todas las funciones
 module.exports = {
     getAllAutores,
     registro,
-    getAutorById,
-    updateAutor,
-    deleteAutor
+    getAutorById
 };

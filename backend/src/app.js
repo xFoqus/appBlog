@@ -1,4 +1,3 @@
-// Creation and configuration of the Express APP
 const express = require('express');
 const cors = require('cors');
 

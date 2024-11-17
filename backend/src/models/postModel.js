@@ -1,42 +1,42 @@
-const db = require('../utils/db');
+const pool = require('../utils/db')
 
-// Obtener todos los posts junto con los datos del autor
-exports.getAllPosts = (callback) => {
-    const query = `
-        SELECT posts.*, autores.nombre, autores.email
-        FROM posts
-        JOIN autores ON posts.autor_id = autores.id
-    `;
-    db.query(query, (err, results) => {
-        callback(err, results);
-    });
-};
 
-// Crear un nuevo post
-exports.createPost = (titulo, descripcion, categoria, autor_id, callback) => {
-    const query = 'INSERT INTO posts (titulo, descripcion, categoria, autor_id) VALUES (?, ?, ?, ?)';
-    db.query(query, [titulo, descripcion, categoria, autor_id], (err, result) => {
-        callback(err, result);
-    });
-};
+async function selectPostByAutorId(autorId) {
+    const [posts] = await pool.query('select * from posts where autor_id = ?', [autorId]);
+    if (posts.length === 0) {
+        return null;
+    }
+    return posts;
+}
 
-// Obtener posts por autor
-exports.getPostsByAutor = (autorId, callback) => {
-    const query = `
-        SELECT posts.*, autores.nombre, autores.email
-        FROM posts
-        JOIN autores ON posts.autor_id = autores.id
-        WHERE autores.id = ?
-    `;
-    db.query(query, [autorId], (err, results) => {
-        callback(err, results);
-    });
-};
+async function selectPostById(postId) {
+    const [posts] = await pool.query('select * from posts where id = ?', [postId]);
 
-// Eliminar un post
-exports.deletePost = (postId, callback) => {
-    const query = 'DELETE FROM posts WHERE id = ?';
-    db.query(query, [postId], (err, result) => {
-        callback(err, result);
-    });
-};
+    if (posts.length === 0) {
+        return null;
+    }
+    return posts[0];
+}
+
+async function selectAllPosts() {
+    const [posts] = await pool.query('select * from posts');
+
+    if (posts.length === 0) {
+        return null;
+    }
+    return posts;
+}
+
+
+async function insertPost({ titulo, descripcion, fecha_creacion, categoria, autor_id }) {
+    const [result] = await pool.query(
+        'insert into posts (titulo, descripcion, fecha_creacion, categoria, autor_id) values (?,?,?,?,?)',
+        [titulo, descripcion, fecha_creacion, categoria, autor_id]
+    );
+    return result.insertId;
+}
+
+
+module.exports = {
+    selectPostByAutorId, insertPost, selectPostById, selectAllPosts
+}

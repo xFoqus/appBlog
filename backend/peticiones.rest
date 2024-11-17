@@ -1,17 +1,9 @@
 @url = http://localhost:3000/api
 
 ### API AUTORES
-
-# Obtener todos los autores
-GET {{url}}/autores
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
-
-###
-
-# Registrarse
+# Registrarse/Crear autor
 POST {{url}}/autores/registro
 Content-Type: application/json
-
 {
   "nombre": "test",
   "email": "test@gmail.com",
@@ -19,50 +11,35 @@ Content-Type: application/json
 }
 
 ###
-
-# Obtener un autor por ID (por ejemplo, ID = 1)
-GET {{url}}/autores/6
+# Obtener todos los autores
+GET {{url}}/autores
 
 ###
-
-# Obtener todos los posts de un autor específico (por ejemplo, autor_id = 1)
+# Obtener todos los posts de un autor específico.
 GET {{url}}/posts/autores/1
 
+###
+# Obtener un autor por ID
+GET {{url}}/autores/1
 
 ###
+# Obtener todos los autores
+GET {{url}}/autores
 
+
+###
+# Obtener todos los posts
+GET {{url}}/posts
+
+###
 # Crear un nuevo post
-POST {{url}}/posts
+POST {{url}}/posts/new
 Content-Type: application/json
-
 {
-  "titulo": "Mi primer post",
-  "descripcion": "Este es el contenido del primer post del blog.",
+  "titulo": "Titulo del post",
+  "descripcion": "Descripcion del post",
+  "fecha_creacion": "{{$datetime 'YYYY-MM-DD HH:mm:ss'}}",
   "categoria": "Tecnología",
   "autor_id": 1
 }
-
-###
-
-# Actualizar un post con ID 1
-PUT {{url}}/posts/1
-Content-Type: application/json
-
-{
-  "titulo": "Mi primer post actualizado",
-  "descripcion": "Este es el contenido actualizado del primer post del blog.",
-  "categoria": "Ciencia",
-  "autor_id": 1
-}
-
-###
-
-# Eliminar un post con ID 1
-DELETE {{url}}/posts/1
-
-###
-
-# Obtener todos los posts por categoría (por ejemplo, categoría = Tecnología)
-GET {{url}}/posts/categoria/Tecnología
-
 

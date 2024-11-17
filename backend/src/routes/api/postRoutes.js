@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 
-// Importar las funciones del controlador de posts
-const { createPost, getPostById, getAllPosts, getPostsByAutor, deletePost } = require('../../controllers/postController');
+const { getPostByAutorId, newPost, getAllPosts } = require('../../controllers/postController');
+const { checkAutorId } = require('../../utils/middlewares');
+const { } = require('../../utils/middlewares');
 
-// Importar los middlewares
-const { } = require('../../utils/middlewares'); // Asegúrate de importar `checkIfAuthor`
-
+router.get('/', getAllPosts);
+router.get('/autores/:autorId', checkAutorId, getPostByAutorId);
+router.post('/new', newPost);
 module.exports = router;
