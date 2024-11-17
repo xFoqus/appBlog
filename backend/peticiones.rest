@@ -13,64 +13,20 @@ POST {{url}}/autores/registro
 Content-Type: application/json
 
 {
-  "nombre": "fran perea",
-  "email": "fran@gmail.com",
+  "nombre": "test",
+  "email": "test@gmail.com",
   "password": "pass"
 }
 
 ###
 
 # Obtener un autor por ID (por ejemplo, ID = 1)
-GET {{url}}/autores/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
-
-###
-
-# Actualizar un autor con ID 1
-PUT {{url}}/autores/1
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
-
-
-{
-  "nombre": "Juan Pérez Actualizado",
-  "email": "juan.perez@nuevoemail.com",
-  "password": "contraseñaActualizada",
-  "imagen": "http://example.com/imagen_actualizada.jpg"
-}
-
-###
-
-# Eliminar un autor con ID 1
-DELETE {{url}}/autores/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
-
-
-
-###
-
-### API POSTS
-
-# Obtener todos los posts
-GET {{url}}/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
-
-
-
-###
-
-# Obtener un post por ID (por ejemplo, ID = 1)
-GET {{url}}/posts/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
-
-
+GET {{url}}/autores/6
 
 ###
 
 # Obtener todos los posts de un autor específico (por ejemplo, autor_id = 1)
-GET {{url}}/posts/autor/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
-
+GET {{url}}/posts/autores/1
 
 
 ###
@@ -78,7 +34,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 # Crear un nuevo post
 POST {{url}}/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
 
 {
   "titulo": "Mi primer post",
@@ -92,8 +47,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 # Actualizar un post con ID 1
 PUT {{url}}/posts/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
-
 
 {
   "titulo": "Mi primer post actualizado",
@@ -106,14 +59,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 
 # Eliminar un post con ID 1
 DELETE {{url}}/posts/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
-
-
 
 ###
 
 # Obtener todos los posts por categoría (por ejemplo, categoría = Tecnología)
 GET {{url}}/posts/categoria/Tecnología
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4MzA5MTg3MywiZXhwIjoxNjgzMDk1NDczfQ.Hs5fAqkdn9IYkThExngUBK-1fw9U9lk0a99fhN_aBd4
 
 

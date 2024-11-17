@@ -2,13 +2,12 @@ const bcrypt = require('bcryptjs');
 const pool = require('../utils/db')
 
 
-async function selectById(autorId) {
+async function selectAutorById(autorId) {
     const [autores] = await pool.query('select * from autores where id = ?', [autorId]);
 
     if (autores.length === 0) {
         return null;
     }
-
     return autores[0];
 }
 
@@ -82,5 +81,5 @@ async function insertAutor({ nombre, email, password }) {
 }
 
 module.exports = {
-    selectById, insertAutor
+    selectAutorById, insertAutor
 }

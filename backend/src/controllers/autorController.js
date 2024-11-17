@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const { selectById, insertAutor } = require("../models/autorModel");
+const { selectAutorById, insertAutor } = require("../models/autorModel");
 
 // Ejemplo de funciones que podrías tener en el controlador
 const getAllAutores = (req, res) => {
@@ -13,7 +13,7 @@ const registro = async (req, res, next) => {
 
     try {
         const insertId = await insertAutor(req.body);
-        const autor = await selectById(insertId);
+        const autor = await selectAutorById(insertId);
         res.json(autor);
     } catch (error) {
         next(error);
@@ -23,7 +23,7 @@ const registro = async (req, res, next) => {
 const getAutorById = async (req, res, next) => {
     const { autorId } = req.params;
     try {
-        const autor = await selectById(autorId);
+        const autor = await selectAutorById(autorId);
         res.json(autor);
     } catch (error) {
         next(error);
